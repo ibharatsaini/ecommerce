@@ -1,0 +1,43 @@
+#banner{
+    padding: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #b185db;
+    /* background-color: #FAEEE2; */
+    height: calc(100vh - 80px);
+}
+.info{
+   width: 50%;
+   display: flex;
+   justify-content: center;
+}
+.colInfo{
+    flex-direction: column;
+}
+.info img{
+    max-height: 100%;
+    max-width: 100%;
+}
+
+.shop span{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    width: 90px;
+    background-color: aqua;
+    color: #FF5911;
+    background-color: white;
+}
+.shop{
+    margin-top: 50px;
+}
+@media  screen and (max-width: 550px) {
+    #banner{
+        flex-direction: column  ;
+    }
+    .info{
+        width: 100%;
+    }
+}

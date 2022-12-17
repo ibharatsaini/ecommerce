@@ -1,0 +1,129 @@
+#cartDiv{
+    width: 100%;
+    margin-top: 100px;
+    background-color: aliceblue;
+    padding: 40px;
+    width: 80%;
+    margin: 100px auto;
+    /* padding: ; */
+}
+.prodDiv{
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    height: 150px;
+    margin: auto;
+    background-color: white;
+    /* border: 0.7px solid grey; */
+}
+.prod{
+    width: 70%;
+    margin: 0px auto;
+}
+.bor{
+    border-bottom: 0.7px solid grey;
+}
+.prodImage{
+    height: 80%;
+    width: 20%;
+    display: flex;
+    justify-content: center;
+    margin: auto 0px;
+}
+.prodTitle{
+    width: 40%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.titleDiv{
+    height: 100%;
+    width: 100%;
+}
+.prodPrice{
+    width: 10% ;
+    height: 100%;
+}
+
+.prodDiv img{
+    max-width: 100%;
+    max-height: 100%;
+}
+.deleteDiv{
+    width: 20%;
+    margin-top: 30px;
+}
+.qty{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 3px;
+}
+
+.minus{
+    width: 30px;
+    height: 30px;
+    padding: 0px;
+    background-color: aliceblue;
+    display: flex;
+    font-size: 20px;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+.number{
+    margin: 0 5px;
+}
+.delete{
+    margin: auto;
+    background-color: rosybrown;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* height: 24px; */
+    width: 50px;
+    font-size: 13px;
+    opacity: 0.8;
+    margin-top: 20px;
+    /* padding: 3px 10px; */
+}
+/* .deleteDiv */
+.totalDiv{
+    display: flex;
+    flex-direction: column;
+    margin-left: auto;
+    /* margin-right: 100px; */
+    width: 250px;
+    background-color: azure;
+    padding: 10px 20px;
+    margin-top: 10px;
+    font: size 18px;
+}
+.chi{
+    flex-direction: row;
+    display: flex;
+    margin:5px 0px;
+    /* padding-left: 50px; */
+    
+}
+.amount{
+    margin-left: auto;
+
+}
+.final{
+    border-bottom: 1px solid grey;
+}
+.buyNow{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    width: 60%;
+
+    margin: 10px auto; 
+    background-color: lightsalmon;
+    border-radius: 10px ;
+    cursor: pointer;
+}

@@ -1,0 +1,210 @@
+#productDetail{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    /* width: 100%; */
+    width: 90%;
+    max-width: 1000px;
+    /* margin:  */
+    margin: 40px auto;
+    background-color: aliceblue;
+    padding: 10px;
+}
+.absWin{
+    display: none;
+    position: fixed;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    top:0;
+    background-color: rgba(0, 0, 0, 0.1);
+    /* background-color: black; */
+}
+.writeReview{
+    width: 300px;
+    background-color: cadetblue;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px 20px;
+    position: fixed;
+}
+.dre{
+    display: flex;
+    justify-content: space-between;
+    font-size: 20px;
+    width: 100%;
+
+}
+
+.cartAction{
+    margin-top: 100px;
+}
+
+.addCart{
+    padding: 10px;
+    background-color: goldenrod;
+    width: 130px;
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 16px;
+    text-transform: capitalize;
+}
+.starRat{
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    height: 40px;
+    font-size: 25px;
+    margin: 10px 0px;
+}
+.absWin textarea{
+    height: 100px;
+    width: 90%;
+}
+
+
+.imageDiv{
+    min-width: 45%;
+    display: flex;
+    justify-content: flex-start;
+    background-color: white;
+    padding: 40px 10px;
+}
+.secDiv{
+    max-width: 50%;
+    padding-left: 50px;
+}
+.imageDiv img{
+    max-width: 100%;
+    max-height: 100%;
+    margin: 0 auto;
+}
+.title{
+    font-size: 26px;
+    margin: 10px 0px;
+}
+.ratRev{
+    display: flex;
+}
+.rating{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: brown;
+    width: 50px;
+    gap: 2px;
+    border-radius: 6px;
+    margin-bottom: 20px;
+}
+.ratRev span{
+    margin-left: 10px;
+    color: purple;
+}
+.priceSpan{
+    font-size: 34px;
+    margin-right: 10px;
+}
+.mrpSpan{
+    font-size: 18px;
+    text-decoration: line-through;
+    color: grey;
+}
+.specDiv{
+    margin: 30px 0px;
+    font-size: 20px;
+}
+.specDiv li{
+    font-size: 15px;
+}
+
+.imagGall{
+    width: 60px;
+    /* height: 100%; */
+    /* border: 1px solid black; */
+}
+.imagGall > div{
+    height: 70px;
+    cursor: pointer;
+    width: 100%;
+    /* margin-bottom: 10px; */
+    border: 1px solid black;
+    border-bottom: none;
+    padding: 5px;
+}
+.imagGall div:last-child{
+    border-bottom: 1px solid black;
+}
+.imagGall > div >img{
+    max-height: 100%;
+    max-width: 100%;
+}
+
+.avatarImg{
+    width: 50px;
+}
+.star{
+    font-size: 20px;
+    margin-right:  4px;
+}
+#reviews{
+    display: flex;
+    max-width: 800px;
+    flex-direction: column;
+    margin: auto;
+    background-color: whitesmoke;
+}
+#reviews h2{
+    font-size: 25px;
+    font-weight: 500;
+    padding: 10px 30px;
+    box-sizing: border-box;
+}
+#headRev{
+    border-bottom: 1px solid black;
+    display: flex;
+    align-items: center;
+}
+.write{
+    margin-left: auto;
+    margin-right: 30px;
+    padding: 10px 20px;
+    background-color: aquamarine;
+    cursor: pointer;
+}
+.revDiv{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 20px;
+    border-bottom: 1px solid black;
+   
+
+}
+.ratDiv{
+    /* flex-direction: column; */
+    height: 30px;
+}
+
+.revDiv section{
+    height: 50px;
+    width: 100%;
+    font-size: 18px;
+
+}
+.revi{
+    max-height: 600px;
+    overflow: auto;
+}
+
+.revInfo{
+    display: flex;
+    padding-left: 10px;
+    padding: auto 0;
+}
+.revInfo h4{
+    font-weight: 470;
+    margin-left: 10px;
+}
