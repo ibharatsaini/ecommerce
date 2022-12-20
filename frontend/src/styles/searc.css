@@ -4,8 +4,12 @@
 }
 .searchForm input{
     border: 0px;
-    border-bottom: 1px solid black;
+    border: 1px solid black;
     width: 70%;
+    height: 40%;
+    outline: none;
+    font-size: 15px;
+    padding: 4px 10px;
 }
 .searchBar{
     margin-left: 10px;

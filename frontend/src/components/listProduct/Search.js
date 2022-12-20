@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
+import { useParams } from 'react-router-dom'
 import { getAllProduct } from '../../reduxStore/actions/productActions'
 import "../../styles/search.css"
 import Filters from './Filters'
@@ -15,7 +16,8 @@ function Search() {
         // setFilters(ch)
         // console.log(filters)
   }
-
+  const {category} = useParams()
+  console.log(category)
   function changePrev(pa){
       console.log( newpage)
       switch(pa){

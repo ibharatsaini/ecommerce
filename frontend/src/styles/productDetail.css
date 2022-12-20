@@ -9,6 +9,7 @@
     margin: 40px auto;
     background-color: aliceblue;
     padding: 10px;
+    height: 490px;
 }
 .absWin{
     display: none;
@@ -133,6 +134,8 @@
     border: 1px solid black;
     border-bottom: none;
     padding: 5px;
+    display: flex;
+        justify-content: center;
 }
 .imagGall div:last-child{
     border-bottom: 1px solid black;
@@ -207,4 +210,124 @@
 .revInfo h4{
     font-weight: 470;
     margin-left: 10px;
+}
+
+@media screen and (min-width: 650px) and (max-width: 1000px){
+    .imageDiv{
+        flex-direction: column;
+    }
+    .imagGall{
+        order: 2;
+        display: flex;
+        width: 100%;
+        flex-direction: row;
+        justify-content: center;
+        margin-top: 20px;
+        height: 70px;
+        /* padding: 20px 0px; */
+    }
+    .imagGall > div{
+        width: 50px;
+        height: 80%;
+        border: 1px solid black;
+        display: flex;
+        justify-content: center;
+
+    }
+    .imagGall > div img{
+        
+    }
+    .imageDiv{
+        padding: 10px 0px;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+    }
+    .imageDiv img{
+        max-width: 100%;
+    }
+    .imagFin{
+        height: 70%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+        box-sizing: border-box;
+    }
+
+    .title{
+        font-size: 23px;
+    }
+    .priceSpan{
+        font-size: 26px;
+    }
+    .secDiv{
+        padding-left: 20px;
+    }
+
+}
+
+@media screen and (min-width: 330px) and (max-width: 650px) {
+    .imageDiv{
+        flex-direction: column;
+        height: 400px;
+        padding: 20px 10px;
+        flex-wrap: wrap;
+    }
+    #productDetail{
+        flex-direction: column;
+        height: 100%;
+    }
+    .secDiv{
+        max-width: 100%;
+        padding-left: 20px;
+        margin-top: 20px;
+    }
+    .cartAction{
+        margin-top: 30px;
+        width: 40%;
+        margin: 0 auto;
+
+    }
+    .imagGall{
+        order: 2;
+        display: flex;
+        width: 100%;
+        flex-direction: row;
+        justify-content: center;
+        margin-top: 20px;
+        /* padding: 20px 0px; */
+    }
+    .imagGall > div{
+        width: 60px;
+        border: 1px solid black ;
+        display: flex;
+        justify-content: center;
+
+    }
+    .imagGall{
+        order: 2;
+        
+    }
+    .write{
+        width: 120px;
+        padding: 8px 10px;
+    }
+    .addCart{
+        width: 100%;
+        min-width: 160px;
+    }
+    #reviews{
+        margin: 0px 30px;
+    }
+    .imagFin img{
+        max-width: 70%;
+
+    }
+    .imagFin{
+        display: flex;
+        height: 75%;
+        width: 100%;
+    }
 }

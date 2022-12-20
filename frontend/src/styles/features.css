@@ -29,3 +29,14 @@
     font-size: 25px;
 }
 /* .div */
+
+@media screen and (max-width: 650px) and (min-width: 350px){
+
+    .features{
+        flex-direction: column;
+        gap: 30px;
+        height: auto;
+        padding: 20px;
+    }
+
+}

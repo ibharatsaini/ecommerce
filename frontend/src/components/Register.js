@@ -1,6 +1,5 @@
 import React,{useState} from 'react'
 import { useNavigate } from 'react-router-dom'
-import { backendUrl } from '../reduxStore/contants'
 import "../styles/login.css"
 function Register() {
     const navigate = useNavigate()
@@ -21,7 +20,7 @@ function Register() {
   }
   async function createAccount(){
 
-       let user = await fetch(`${backendUrl}/api/v1/user/create`,{
+       let user = await fetch(`/api/v1/user/create`,{
              method:"POST",
              headers:{
                 "Accept":"application/json",
@@ -42,22 +41,22 @@ function Register() {
         <div className='formDiv'>
             <div className='email'>
                  Firstname: 
-                 <input type="text" name="firstName" value={userDetails.firstName}
+                 <input required={true} type="text" name="firstName" value={userDetails.firstName}
                  onChange={(e)=>{updateUser(e.target.name,e.target.value)}} />
             </div>
             <div className='email'>
                  LastName: 
-                 <input type="text" name="lastName" value={userDetails.lastName}
+                 <input  required={true} type="text" name="lastName" value={userDetails.lastName}
                  onChange={(e)=>{updateUser(e.target.name,e.target.value)}} />
             </div>
             <div className='email'>
                  Email: 
-                 <input type="email" name="email" value={userDetails.email}
+                 <input required={true} type="email" name="email" value={userDetails.email}
                  onChange={(e)=>{updateUser(e.target.name,e.target.value)}} />
             </div>
             <div className='email'>
                  Password: 
-                 <input type="password" name="password" value={userDetails.password}
+                 <input required={true} type="password" name="password" value={userDetails.password}
                  onChange={(e)=>{updateUser(e.target.name,e.target.value)}} />
             </div>
             <div className='submit' onClick={createAccount}>Create Account</div>

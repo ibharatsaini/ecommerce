@@ -1,16 +1,24 @@
-import { backendUrl } from "../contants"
+export const FETCH_USER = "FETCH_USER"
+export const LOGIN_USER = "LOGIN_USER"
+export const LOGOUT_USER = "LOGOUT_USER"
+export const ERROR_USER = 'ERROR_USER'
+export const SUCCESS_USER = 'SUCCESS_USER'
 
-const FETCH_USER = "FETCH_USER"
-const LOGIN_USER = "LOGIN_USER"
-const LOGOUT_USER = "LOGOUT_USER"
-const ERROR_USER = 'ERROR_USER'
-const SUCCESS_USER = 'SUCCESS_USER'
+export const fetchlocalUser =()=>{
+    console.log("Had it in fetch user")
+    const userInfo = localStorage.getItem('user')?JSON.parse(localStorage.getItem("user")):localStorage.clear()
+    console.log(userInfo)
+    return userInfo
+}
+
+
+
 export const loginUser =(creds) => async(dispatch)=>{
     try{
         dispatch(fetchUser())
         console.log(creds)
 
-        const  data = await( await fetch(`${backendUrl}/api/v1/user/login`,{
+        const  data = await( await fetch(`/api/v1/user/login`,{
             method:"POST",
             headers:{
                 "Accept":"application/json",
@@ -19,6 +27,7 @@ export const loginUser =(creds) => async(dispatch)=>{
             body:JSON.stringify(creds)
         })).json()
         if(!data.success) return dispatch({type:ERROR_USER})
+        localStorage.setItem('user',JSON.stringify(data.data))
         dispatch({type:LOGIN_USER,payload:data.data})
 
     }catch (e){
@@ -27,11 +36,12 @@ export const loginUser =(creds) => async(dispatch)=>{
     
 }
 
-export const logoutUser = ()=>async(dispatch)=>{
+export const logoutUser = ()=>{
     try {
-        dispatch(fetchUser())
-        (await fetch(`${backendUrl}/api/v1/user/logout`))
+        // dispatch(fetchUser())
+        // (await fetch(`${backendUrl}/api/v1/user/logout`))
         // if(!(data.success)) return {type:LOGOUT_USER ,}
+        localStorage.clear()
         return {
             type: LOGOUT_USER,
         }

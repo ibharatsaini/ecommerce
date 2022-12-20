@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
-import {Link} from "react-router-dom"
+import {Link, useParams} from "react-router-dom"
 import { getAllProduct } from '../../reduxStore/actions/productActions'
 export default function Filters({keyword}) {
   const [forms,setForm] = useState({cod:false,min:0,max:0})
@@ -9,8 +9,17 @@ export default function Filters({keyword}) {
   function clear(){
        
   }
+  const {category} = useParams()
   function changeCod(){
-    dispatch(getAllProduct(keyword,forms))
+    if(!category){
+      console.log('windo')
+      dispatch(getAllProduct(keyword,forms))
+    }else{
+      console.log(forms)
+      dispatch(getAllProduct('',forms,1,window.location.href.split("category/")[1]))
+    }
+    // dispatch(getAllProduct(keyword,forms))
+
     // console.log(document)
     // onChildClick(!document.getElementById("cod").checked)
   }
@@ -18,9 +27,12 @@ export default function Filters({keyword}) {
     <div id='filters'>
       <div className='categories'>
         <h4>Categories</h4>
-        <Link to="/mobiles">mobiles</Link>
-        <Link to="/laptop">laptop</Link>
-        <Link to="/led">Led TV</Link>
+        <Link to="/category/mobile">mobiles</Link>
+        <Link to="/category/laptop">laptop</Link>
+        <Link to="/category/led">Led TV</Link>
+        <Link to="/category/headphone">Headphone</Link>
+        <Link to="/category/monitor">Monitor</Link>
+
         {/* <Link to="/">mobiles</Link> */}
       </div>
       {/* <div onClick={()=>changeCod()} className='cod'> */}

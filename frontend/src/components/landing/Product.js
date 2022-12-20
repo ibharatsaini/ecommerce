@@ -1,23 +1,31 @@
 import React from 'react'
-import Jacket from "../../images/jacket.png"
-
-function Product() {
+import {BsFillStarFill} from 'react-icons/bs'
+import { Link } from 'react-router-dom'
+function Product({id,name,mrp,price,img,star}) {
   return (
-    <div className='productDiv'>
+    <Link to={`/product/${id}`} className='productDiv'>
                 <div className='image'>
-                    <img src={Jacket} />
+                    <img src={img} />
                 </div>
-                <div className='name'>Headphones</div>
-                <div className='price'>
-                    <span>{"4000"}</span>
-                    <span>{"3000"}</span>
+                <div className='starsOff'>
+                <div className='nameOff'>{name}</div>
+                        
+                        <div className='ratingOff'>
+                            {Math.floor(star)}&nbsp;
+                            <BsFillStarFill color={"lightgoldenrodyellow"}/>
+                        </div>
+                    {/* {100 - Math.floor(mrp * 100/price)} */}
                 </div>
-                <div className="cta">
+                <div className='priceOff'>
+                    <span> &#8377;{price}</span>
+                    <span> &#8377;{mrp}</span>
+                </div>
+                {/* <div className="cta">
                       <div className='add'>
                         Add To Cart
                       </div>
-                </div>
-            </div>
+                </div> */}
+            </Link>
   )
 }
 

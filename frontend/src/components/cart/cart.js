@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useEffect} from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import {updateCart,deleteCart,deleteItem} from "../../reduxStore/actions/cartActions"
 import { addressUpdate,itemUpdate } from '../../reduxStore/actions/orderActions'
@@ -7,6 +7,7 @@ import "../../styles/cart.css"
 function Cart() {
   console.log("Cart")
   const {cartItems }= useSelector(state=>state.cartItems)
+  const {isAuthenticated} = useSelector(state=>state.user)
   // const orderIte
   const dispatch = useDispatch()
   const navigate = useNavigate()
@@ -16,7 +17,12 @@ function Cart() {
      console.log(cartItems)
   }
  
-  if(!cartItems.length>0) return (<div>No cart</div>)
+  // if(!cartItems.length>0) return (navigate("/"))
+  useEffect(() => {
+    if(cartItems.length == 0){
+      navigate("/")
+    }
+  }, [])  
   let totalAmt=0
   cartItems.forEach((item,i) => {
     //    totalAmt
@@ -40,7 +46,11 @@ function Cart() {
     // console.log(navigate("/login?redirect=shipping"))
     dispatch(itemUpdate({...data}))
     // console.log()
-    navigate("/login?redirect=shipping")
+    if(!isAuthenticated ){
+      return navigate("/login?redirect=shipping") 
+    }else{
+       navigate("/shipping")
+    }
 
   }
   return (
@@ -50,20 +60,22 @@ function Cart() {
         <div className='prodImage'>
             <img src={item.images[0]} />
         </div>
-        <div className='prodTitle'>
-             <div className='titleDiv'> <h3>{item.name}</h3></div>
-        </div>
-             
-        <div className='deleteDiv'>
-            <div className='qty'>
-                <div className='minus' onClick={()=>{item.quantity>1&&dispatch(deleteCart({...item}))}}>-</div>
-                <div className='number'>{item.quantity}</div>
-                <div className='minus' onClick={()=>{dispatch(updateCart({...item}))}}>+</div>
+        <div className='moni'>
+            <div className='prodTitle'>
+                <div className='titleDiv'> <h3>{item.name}</h3></div>
             </div>
-            <div className='delete' onClick={()=>{deleting(item._id)}} >Delete</div>
-            </div> 
-        <div className='prodPrice'>
-            <h4>{item.price}</h4>
+                
+            <div className='deleteDiv'>
+                <div className='qty'>
+                    <div className='minus' onClick={()=>{item.quantity>1&&dispatch(deleteCart({...item}))}}>-</div>
+                    <div className='number'>{item.quantity}</div>
+                    <div className='minus' onClick={()=>{dispatch(updateCart({...item}))}}>+</div>
+                </div>
+                <div className='delete' onClick={()=>{deleting(item._id)}} >Delete</div>
+                </div> 
+            <div className='prodPrice'>
+                <h4>&#8377;{item.price}</h4>
+              </div>
           </div>
         
         
@@ -72,10 +84,10 @@ function Cart() {
     ))}
     <div className='prod'>
     <div className='totalDiv'>
-       <div className='chi'> Amount : <div className='amount'>{totalAmt}</div></div> 
-        <div className='chi'>GST: <div className='amount'>{gst}</div></div>
-        <div className='chi final'>Shipping Amount: <div className='amount'>{shippingPrice}</div></div>
-        <div className='chi'><div className='amount'>{totalPrice}</div></div>
+       <div className='chi'> Amount : <div className='amount'>&#8377;{totalAmt}</div></div> 
+        <div className='chi'>GST: <div className='amount'>&#8377;{gst}</div></div>
+        <div className='chi final'>Shipping Amount: <div className='amount'>&#8377;{shippingPrice}</div></div>
+        <div className='chi'><div className='amount'>&#8377;{totalPrice}</div></div>
         <div className='buyNow' onClick={()=>{buyNow()}}>Place Order</div>
     </div>
     </div>

@@ -23,6 +23,7 @@ function App() {
                 <Route path="/login" element={<Login />}/>
                 <Route path="/search" element={<Search />} />
                 <Route path="/product/:id" element={<ProductDetail  />} />
+                <Route path='/category/:category' element={<Search />} />
                 <Route path="/cart" element={<Cart />} />
                 <Route path="/shipping" element={<Shipping />} />
                 {/* <Route path="/forgot-password" element={} /> */}

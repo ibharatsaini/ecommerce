@@ -8,6 +8,7 @@ const product = {
 }
 
 
+
 export const productReducer = (state=product,action)=>{
         switch(action.type){
             case 'FETCH_PRODUCT_LOADING':

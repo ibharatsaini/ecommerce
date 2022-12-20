@@ -1,11 +1,11 @@
-import { backendUrl } from "../contants"
 
-const ADDRESS_UPDATE = "ADDRESS_UPDATE"
-const ITEMS_UPDATE=  "ITEMS_UPDATE"
-const PLACED_ORDER = "PLACED_ORDER"
-const FETCHED_ORDERS= "FETCHED_ORDERS"
-const PLACING_ORDERS=  "PLACING_ORDES"
-const ERROR_ORDERS = "ERROR_ORDER"
+export const ADDRESS_UPDATE = "ADDRESS_UPDATE"
+export const ITEMS_UPDATE=  "ITEMS_UPDATE"
+export const PLACED_ORDER = "PLACED_ORDER"
+export const FETCHED_ORDERS= "FETCHED_ORDERS"
+export const PLACING_ORDERS=  "PLACING_ORDES"
+export const ERROR_ORDERS = "ERROR_ORDER"
+
 export function addressUpdate(data){
     return {
         type:ADDRESS_UPDATE,
@@ -22,8 +22,9 @@ export function itemUpdate(data){
 
 export const placedOrder =(orders)=>async (dispatch)=>{
     try{
+        console.log(orders)
         dispatch({type:PLACING_ORDERS})
-        const data = await (await fetch(`${backendUrl}/api/v1/order/create`,{
+        const data = await (await fetch(`/api/v1/order/create`,{
             method:"POST",
             headers:{
                 "Accept":"application/json",
@@ -36,6 +37,7 @@ export const placedOrder =(orders)=>async (dispatch)=>{
         if(!data.success) return dispatch({type:ERROR_ORDERS})
         console.log(data.data)
         dispatch({type:PLACED_ORDER,payload:data.data})
+        
 
     } catch(e){
         console.log(e)
@@ -47,54 +49,5 @@ export function fetchOrders(data){
         type:FETCHED_ORDERS,
         payload:data
     }
-
-}
-
-export function orderReducer (state={},action){
-       switch(action.type){
-            case ADDRESS_UPDATE:
-            case ITEMS_UPDATE:
-                return {
-                    ...state,
-                        order:{...state.order,...action.payload}
-                    }
-                
-            // case ITEMS_UPDATE:
-            //     return{
-            //         ...state,
-            //         order:{...state.order}
-            //     }
-            case FETCHED_ORDERS:
-                return{
-                    ...state,
-                    ...action.payload
-                }
-            case PLACED_ORDER:
-                return {
-                    ...state,
-                    loading:false,
-                    error:false,
-                    order:action.payload
-
-                }
-            case PLACING_ORDERS:
-                console.log(action.payload)
-                return{
-                    ...state,
-                    loading:true,
-                    error:false,
-                    order:{}
-                }
-            case ERROR_ORDERS:
-                return{
-                    ...state,
-                    loading:false,
-                    error:true,
-                    order:{}
-                }
-            default:
-                return state
-
-       }
 
 }

@@ -8,18 +8,18 @@ import { updateCart } from '../reduxStore/actions/cartActions';
 import {getProduct} from "../reduxStore/actions/productActions"
 import "../styles/productDetail.css"
 import { toast } from 'react-hot-toast';
-import { backendUrl } from '../reduxStore/contants';
+import Loading from './Loading';
 
 function ProductDetail() {
   const {id} = useParams()
   console.log(id)
-  let product = useSelector(state=>state.newProduct)
+  let {product,loading} = useSelector(state=>state.newProduct)
   const [review,setReview] = useState({rating:0, comment:""})
   console.log(product)
   const dispatch = useDispatch()
   console.log(product)
   function changeImage({target}){
-    document.querySelector(".imageDiv > img").src = target.src
+    document.querySelector(".imagFin > img").src = target.src
   }
   function createReview(){
     document.querySelector(".absWin").style.display='flex'
@@ -38,7 +38,7 @@ function ProductDetail() {
   }
   
   function submitReview(){
-        fetch(`${backendUrl}/api/v1/product/create-review`,{
+        fetch(`/api/v1/product/create-review`,{
             method:"POST",
             headers:{
                 "Content-Type":"application/json"
@@ -51,13 +51,16 @@ function ProductDetail() {
   }
 
   useEffect(()=>{
-    //   product = product.product.product
+    //   product = product.product
       console.log("Hellow")
       console.log("id")
       dispatch(getProduct(id))
-      product = {...product.product}
+      product = {...product}
   },[dispatch,id])
-  if(!(product.product instanceof Object)) return (<h1>No product</h1>)
+  if(loading){
+    return <Loading ></Loading>
+  }
+  if(!(product instanceof Object)) return (<h1>No product</h1>)
   console.log(product)
   return (
     <> 
@@ -78,7 +81,7 @@ function ProductDetail() {
                 <div className='imageDiv'>
                     <div className='imagGall'>
                         {console.log(product)}
-                        {product.product.images.map(el=>{
+                        {product.images.map(el=>{
                             // console.log(el)
                             return (
                             <div onClick={(e)=>{changeImage(e)}}>
@@ -88,30 +91,32 @@ function ProductDetail() {
                         )
                         })}
                     </div>
-                    <img src={product.product.images[0]}/>
+                    <div className='imagFin'>
+                        <img src={product.images[0]}/>
+                    </div>
                 </div>
                 <div className='secDiv'>
                     <div className='title'>
-                        {product.product.name}
+                        {product.name}
                     </div>
                     <div className='ratRev'>
                         <div className='rating'>
-                            {Math.floor(product.product.ratings)}&nbsp;
+                            {Math.floor(product.ratings)}&nbsp;
                             <BsFillStarFill color={"lightgoldenrodyellow"}/>
                         </div>
-                        <span>{`${product.product.reviews.length} Reviews`}</span>
+                        <span>{`${product.reviews.length} Reviews`}</span>
                     </div>
                     <div className='pricesDiv'>
-                        <span className='priceSpan'> &#8377;{product.product.price}</span>
-                        <span className='mrpSpan'> &#8377;{product.product.mrp}</span>
+                        <span className='priceSpan'> &#8377;{product.price}</span>
+                        <span className='mrpSpan'> &#8377;{product.mrp}</span>
                     </div>
                     <div className='specDiv'>
                         <ul >
-                            {product.product.specs.map(spec=><li>{spec}</li>)}
+                            {product.specs.map(spec=><li>{spec}</li>)}
                         </ul>
                     </div>
                     <div className='cartAction'>
-                        <div className='addCart' onClick={()=>{dispatch(updateCart(product.product))}}>Add to cart</div>
+                        <div className='addCart' onClick={()=>{dispatch(updateCart(product))}}>Add to cart</div>
                     </div>
                 </div>
             </div>
@@ -119,7 +124,7 @@ function ProductDetail() {
                 <div id="headRev"><h2>Reviews </h2> <div onClick={createReview} className='write'>Write Review</div></div>
                 <div className='revi'>
                     {
-                        product.product.reviews.map(el=>{
+                        product.reviews.map(el=>{
                             const l=Math.floor(el.rating)
                             console.log(l)
                             return (

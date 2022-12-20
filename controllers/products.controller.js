@@ -65,7 +65,8 @@ const searchProducts = async(req,res)=>{
     if("max" in req.query){
         query.price = {...query.price,$lte:req.query.max}
     }
-    query.name={$regex:req.query.keyword ,$options:"i"}
+
+    req.query.hasOwnProperty("category") ? query.category=req.query.category : query.name ={$regex:req.query.keyword ,$options:"i"}
     console.log(req.query)
     const skip = resultPerPage * ((Number(req.query.page) || 1) - 1)
     console.log(skip)

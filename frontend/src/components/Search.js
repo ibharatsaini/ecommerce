@@ -4,15 +4,24 @@ import {useNavigate} from "react-router-dom"
 
 import "../styles/searc.css"
 function Search() {
-    const [value,setValue] = useState()
+    // const consol
     const navigate = useNavigate()
+    const val = new URLSearchParams(window.location.search).get("q")
+    const [value,setValue] = useState(val || "")
+
     // let style={
     //     width: "400px",
     //     height: "100%"
+    // const input = document.querySelector(".searchForm input")
+    // input.addEventListener("keypress",(e)=>{
+    //      if(e.key == 'Enter'){
+    //       console.log('enter')
+    //      }
+    // })
     // }
   return (
-    <form  className='center flex items searchForm'>
-        <input type="text" name="q" onChange={(e)=>setValue(e.target.value)} value={value}></input>
+    <form action='/search' className='center flex items searchForm'>
+        <input required={true} type="text" name="q" onChange={(e)=>setValue(e.target.value)} value={value}></input>
         <div className="flex column searchBar">
             <IoMdSearch onClick={()=>{navigate(`/search?q=${value}`)}} />
         </div>

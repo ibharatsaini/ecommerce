@@ -1,9 +1,5 @@
 
 import axios from "axios"
-import {applyMiddleware}from 'redux'
-import {createStore} from 'redux'
-import thunk from 'redux-thunk'
-import { backendUrl } from "../contants"
 
 const FETCH_PRODUCT_SUCCESS = "FETCH_PRODUCT_SUCCESS"
 const FETCH_PRODUCT_LOADING = "FETCH_PRODUCT_LOADING"
@@ -56,7 +52,7 @@ function newProductError(){
 }
 
 
-export const getAllProduct = (keyword,filters,page=1)=>(dispatch)=>{
+export const getAllProduct = (keyword,filters,page=1,category='')=>(dispatch)=>{
         dispatch(productLoading())
         let query=`&page=${page}`
         if(filters.cod || filters.min>0 || filters.max>=filters.min){
@@ -64,7 +60,14 @@ export const getAllProduct = (keyword,filters,page=1)=>(dispatch)=>{
             query+= filters.min>0? `&min=${filters.min}`:""
             query+= filters.max>0? `&max=${filters.max}`:""
         }
-        const url =`${backendUrl}/api/v1/product/all?keyword=${keyword}${query}`
+        let url;
+        if(category.length > 0 ){
+            url =`/api/v1/product/all?category=${category}${query}`
+
+        }else{
+            url =`/api/v1/product/all?keyword=${keyword}${query}`
+            
+        }
         axios.get(url)
               .then(data=>{dispatch(productSuccess(data.data.data))})
             //   .then(data=>dispatch(productSuccess(data.data)))
@@ -75,7 +78,7 @@ export const getAllProduct = (keyword,filters,page=1)=>(dispatch)=>{
 export const getProduct = (id)=> (dispatch)=>{
       console.log('get product',id)
       dispatch(newproductLoading())
-      const url = `${backendUrl}/api/v1/product/${id}`
+      const url = `/api/v1/product/${id}`
       axios.get(url)
             .then(data=>{dispatch(newproductUpdate(data.data.data))})
             .catch(e=>{console.log(e);dispatch(newProductError())})

@@ -1,8 +1,3 @@
-// import { STATES } from "mongoose"
-// import createStore from "redux"
-
-
-
 export const UPDATE_CART = "UPDATE_CART"
 export const DELETE_CART = "DELETE_CART"
 export const DELETE_ITEM = "DELETE_ITEM"

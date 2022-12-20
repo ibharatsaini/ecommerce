@@ -8,6 +8,7 @@
     align-items: center;
     justify-content: center;
     padding: 0px 20px;
+    z-index: 3;
     background-color: #f4f5f7;
     /* position: relative; */
 }
@@ -30,6 +31,7 @@
 .search{
     margin-left: 100px;
     width: 400px;
+    height: 100%;
 }
 .dropdown{
        top: 100px;
@@ -38,6 +40,7 @@
 .cate{
     position: relative;
     height: 100%;
+    cursor: pointer;
 }
 .category{
     display: flex;
@@ -47,13 +50,32 @@
     
 }
 .drop{
-    top: 80px;  
+    top: 60px;  
     position: fixed;
-    display: none;
+    display: flex;
+    flex-direction: column;
+    background-color: #edf2f4;
+    width: 150px;
+    text-align: center;
+    
 }
-.cate:hover .drop{
+#join{
+    padding: 10px 20px;
+    background-color: wheat;
+    font-size: 17px;
+    text-decoration: none;
+    color: black;
+    cursor: pointer;
+}
+.drop a{
+    text-decoration: none;
+    color: black;
+    text-transform: capitalize;
+    padding: 5px 0px;
+}
+/* .cate:hover .drop{
     display: block;
-}
+} */
 /* .logo img{
     max-width: 100%;
     min-height: 100%;
@@ -80,7 +102,7 @@
 
 
 @media screen and (max-width: 900px) {
-    .cate,.avatar{
+    .cate{
         display: none
     }
     .bars{
@@ -91,7 +113,7 @@
     .search{
         width: 300px;
         min-width: 200px;
-        margin-left: 50px;
+        margin-left: 20px;
     }
     .logo{
         /* width: 80px; */
@@ -120,7 +142,8 @@
 
 @media screen and (max-width: 550px){
     .search{
-        margin-left: 20px;
+        margin-left: 0px;
+        width: 250px;
     }
     .bars{
         margin-right: 20px;
@@ -131,5 +154,14 @@
     .cart{
         font-size: 20px;
     }
-    
+    #header{
+        padding: 0px 10px;
+    }
+    .bars{
+        margin-right: 5px;
+    }
+    .checkCart{
+        flex-direction: column;
+        height: 100%;
+    }
 }

@@ -53,11 +53,11 @@ function Login() {
         <div className='formDiv'>
             <div className='email'>
               Email :
-              <input type="text" value={login.email} onChange={(e)=>{setLogin(prev=>({...prev,email:e.target.value}))}} />
+              <input required={true} type="text" value={login.email} onChange={(e)=>{setLogin(prev=>({...prev,email:e.target.value}))}} />
             </div>
             <div className='email'>
               Password :
-              <input type="text" value={login.password} onChange={(e)=>{setLogin(prev=>({...prev,password:e.target.value}))}}/>
+              <input required={true} type="password" value={login.password} onChange={(e)=>{setLogin(prev=>({...prev,password:e.target.value}))}}/>
             </div>
             <Link to="/forgot-password" className='forgot'>Forget Password?</Link>
             {loading ?<div className='submit'>Loading</div> : <div className='submit' onClick={()=>dispatch(loginUser(login))}>Login</div>}

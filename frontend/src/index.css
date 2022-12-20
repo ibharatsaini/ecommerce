@@ -7,6 +7,8 @@ body {
   -moz-osx-font-smoothing: grayscale;
   width: 100%;
   background-color: #eff0f5;
+  min-width: 350px;
+
 }
 *{
   box-sizing: border-box;
@@ -14,7 +16,10 @@ body {
 
 #root{
   width: 100%;
+  max-width: 1600px;
+  margin: auto;
 }
+
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
